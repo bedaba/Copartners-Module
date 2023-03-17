@@ -1,0 +1,65 @@
+<odoo>
+    <record id="action_copartners_report" model="ir.actions.report">
+        <field name="name">Copartners</field>
+        <field name="model">copartners.copartners</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">copartners.report_copartners_details</field>
+        <field name="report_file">copartners.report_copartners_details</field>
+        <field name="print_report_name">'copartners - %s' % (object.name)</field>
+        <field name="binding_type">report</field>
+    </record>
+    <template id="report_copartners_details">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Field Name</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Copartner Name:</td>
+                                <td><span t-field="o.name"/></td>
+                            </tr>
+                            <tr>
+                                <td>Gender:</td>
+                                <td><span t-field="o.gender"/></td>
+                            </tr>
+                            <tr>
+                                <td>Country:</td>
+                                <td><span t-field="o.country"/></td>
+                            </tr>
+                            <tr>
+                                <td>Joining Date:</td>
+                                <td><span t-field="o.joining_date"/></td>
+                            </tr>
+                            <tr>
+                                <td>Tags:</td>
+                                <td><span t-field="o.tags"/></td>
+                            </tr>
+                            <tr>
+                                <td>Customers:</td>
+                                <td><span t-field="o.customers"/></td>
+                            </tr>
+                            <tr>
+                                <td>Company:</td>
+                                <td><span t-field="o.company"/></td>
+                            </tr>
+                            <tr>
+                                <td>Notes:</td>
+                                <td><span t-field="o.notes"/></td>
+                            </tr>
+                            <tr>
+                                <td>Comments:</td>
+                                <td><span t-field="o.comments"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

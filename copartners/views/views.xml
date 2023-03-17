@@ -1,0 +1,122 @@
+<odoo>
+  <data>
+
+    <!-- explicit kanban view definition -->
+    <record model="ir.ui.view" id="view_copartners_kanban">
+      <field name="name">copartners kanban</field>
+      <field name="model">copartners.copartners</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_resource_vignette">
+                <div class="oe_resource_details">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="name"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="gender"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="country"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="joining_date"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="tags"/></a></li>
+                    <li class="list-group-item">
+                      <ol class="nav flex-column">
+                        <li class="nav-item"><field name="customers"/></li>
+                      </ol>
+                    </li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="company"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="notes"/></a></li>
+                    <li class="list-group-item"><a style="color:black" class="nav-link" type="edit"><field name="comments"/></a></li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="view_copartners_list">
+      <field name="name">copartners list</field>
+      <field name="model">copartners.copartners</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="gender"/>
+          <field name="country"/>
+          <field name="joining_date"/>
+          <field name="tags"/>
+          <field name="customers"/>
+          <field name="company"/>
+          <field name="notes"/>
+          <field name="comments"/>
+        </tree>
+      </field>
+    </record>
+
+  
+    <!-- explicit form view definition -->
+    <record model="ir.ui.view" id="view_copartners_form">
+      <field name="name">copartners form</field>
+      <field name="model">copartners.copartners</field>
+      <field name="arch" type="xml">
+        <form string="Cource Form">
+          <sheet>
+            <div style="float:center; margin_left:475px; font_size:2.083333rem;">
+              <label for="name" string="Name" class="oe_inline"/>
+              <h1>
+                <field name="name"/>
+              </h1>
+            </div>
+            <div style="float:center; margin_left:475px; font_size:2.083333rem;">
+              <label for="customers" string="Customers" class="oe_inline"/>
+              <field name="customers"/>
+            </div>
+
+            <group>
+
+              <group>
+                <field name="gender"/>
+                <field name="country"/>
+                <field name="joining_date"/>
+                <field name="tags"/>
+              </group>
+              <group>
+                <field name="company"/>
+                <field name="notes"/>
+                <field name="comments"/>
+              </group>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+              <field name="message_follower_ids"/>
+              <field name="message_ids"/>
+          </div>
+           <script type="text/javascript">
+            $(document).ready(function () {
+                $('button.o_form_button_create').hide();
+            });
+        </script>
+        </form>
+      </field>
+    </record>
+
+ 
+
+    <record model="ir.actions.act_window" id="copartners.action_window">
+      <field name="name">copartners window</field>
+      <field name="res_model">copartners.copartners</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="copartners" id="copartners.menu_root"/>
+    <menuitem name="Menu" id="copartners.menu_1" parent="copartners.menu_root"/>
+    <menuitem name="Text" id="copartners.menu_1_list" parent="copartners.menu_1"
+              action="copartners.action_window"/>
+   
+
+  </data>
+</odoo>
